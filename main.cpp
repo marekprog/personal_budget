@@ -15,7 +15,8 @@ int main()
     //UsersFile usersFile("filename.xml");
     //usersFile.saveUsersToFile(userManager.getUsers());
     //usersFile.readUsersFromFile();
-    cout<<date.getDays("");
+    //cout<<date.getDays("");
+    date.getCurrentDate();
     return 0;
 }
 
