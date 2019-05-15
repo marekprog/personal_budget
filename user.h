@@ -24,6 +24,7 @@ public:
     string getSurname();
     string getLogin();
     string getPassword();
+    friend class UsersFile;
 };
 
 #endif // USER_H

@@ -6,5 +6,6 @@ XmlFile::XmlFile():FILE_NAME("textxml.xml"){};
 
 bool XmlFile::fileExists()
 {
+    cout<<"file opened succesfully"<<endl;
     return true;
 }

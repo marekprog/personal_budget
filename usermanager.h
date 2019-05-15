@@ -2,12 +2,13 @@
 #define USERMANAGER_H
 #include <vector>
 #include "user.h"
+#include "usersfile.h"
 
 class UserManager
 {
     int loggedUserId;
     vector<User> users;
-    //fileWithUsers plikZUzytkownikami;
+    UsersFile usersFile;
 
 
     //User podajDaneNowegoUzytkownika();
@@ -15,8 +16,9 @@ class UserManager
     //bool czyIstniejeLogin(string login);
 
 public:
-    UserManager();
-    void UserRegistration();
+    UserManager(string fileWithUsers);
+    void userRegistration();
+    void userLogin();
     vector<User> getUsers();
 };
 

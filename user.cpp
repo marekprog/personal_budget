@@ -6,7 +6,7 @@ User::User()
 }
 void User::setId(int newId)
 {
-    cout<<"setting new Id"<<endl;
+    //cout<<"setting new Id"<<endl;
     id=newId;
 };
 void User::setName()
