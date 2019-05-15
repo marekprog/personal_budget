@@ -25,7 +25,6 @@ void UserManager::userRegistration()
 }
 
 void UserManager::userLogin(){
-    //Uzytkownik uzytkownik;
     string login = "", pass = "";
 
     cout << endl << "Your login: ";
