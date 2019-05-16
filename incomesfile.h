@@ -11,6 +11,8 @@ public:
     IncomesFile(string incomesFilename);
     void saveIncomesToFile(vector<Income> incomesVector);
     vector<Income> readIncomesFromFile();
+    bool fileExists();
+
 };
 
 #endif // INCOMESFILE_H

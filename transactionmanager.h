@@ -7,6 +7,7 @@
 #include "incomesfile.h"
 #include "datehandler.h"
 #include <algorithm>
+#include "utils.h"
 
 class TransactionManager
 {

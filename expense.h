@@ -8,7 +8,10 @@ class Expense : public Transaction
     {
         {1,"bills"},
         {2,"leisure"},
-        {3,"misc"}
+        {3,"groceries"},
+        {4,"transport"},
+        {5,"rent"},
+        {6,"other"}
     };
     string item;
 public:

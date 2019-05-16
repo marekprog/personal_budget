@@ -2,6 +2,12 @@
 
 IncomesFile::IncomesFile(string incomesFilename):INCOMES_FILENAME(incomesFilename){};
 
+bool IncomesFile::fileExists()
+{
+    ifstream ifile(INCOMES_FILENAME.c_str());
+    return ifile.good();
+}
+
 void IncomesFile::saveIncomesToFile(vector<Income> incomesVector)
 {
     cout<<"saving incomes file"<<endl;

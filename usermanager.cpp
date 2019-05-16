@@ -12,7 +12,7 @@ vector<User> UserManager::getUsers()
 void UserManager::userRegistration()
 {
     User user;
-    cout<<"Rejestracja Uzytkownika, podaj dane:"<<endl;
+    cout<<"User registration, enter your data:"<<endl;
     int newId=users.size()+1;
     user.setId(newId);
     user.setName();
@@ -37,18 +37,18 @@ void UserManager::userLogin(){
         {
             for (int attempts = 3; attempts > 0; attempts--)
          {
-                cout << "Enter password. : Attempts left" << attempts << ": ";
+                cout << "Enter password. : Attempts left " << attempts << ": ";
                 cin >> pass;
 
                 if (itr -> getPassword() == pass)
                 {
-                    cout << endl << "Succesfull login" << endl << endl;
+                    cout << endl << "Succesful login" << endl << endl;
                     loggedUserId= itr -> getId();
                     break;
 
                 }
-             cout << "Wrong password entered 3 times." << endl;
             }
+            cout << "Wrong password entered 3 times." << endl;
         break;
         }
         itr++;

@@ -11,6 +11,8 @@ public:
     ExpensesFile(string expensesFilename);
     void saveExpensesToFile(vector<Expense> expensesVector);
     vector<Expense> readExpensesFromFile();
+    bool fileExists();
+
 };
 
 #endif // EXPENSESFILE_H

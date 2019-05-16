@@ -24,6 +24,7 @@ int main()
             {
             case '1':
                 userManager.userRegistration();
+                cin.get();
                 break;
             case '2':
                 userManager.userLogin();
@@ -48,15 +49,12 @@ int main()
                 break;
             case '3':
                 transaction.getBalanceCurrentMonth(userManager.getUserLogin());
-                cin.get();
                 break;
             case '4':
                 transaction.getBalanceLastMonth(userManager.getUserLogin());
-                cin.get();
                 break;
             case '5':
                 transaction.getBalanceCustom(userManager.getUserLogin());
-                cin.get();
                 break;
             case '6':
                 userManager.changePassword();
@@ -73,7 +71,6 @@ int main()
 char mainMenu()
 {
     char selection;
-
     system("clear");
     cout << "    >>> PERSONAL BUDGET <<<" << endl;
     cout << "---------------------------" << endl;
@@ -90,7 +87,7 @@ char mainMenu()
 char userMenu()
 {
     char selection;
-
+    cin.get();
     system("clear");
     cout << " >>> USER MENU <<<" << endl;
     cout << "---------------------------" << endl;
@@ -108,4 +105,6 @@ char userMenu()
 
     return selection;
 }
+
+
 

@@ -2,6 +2,12 @@
 
 ExpensesFile::ExpensesFile(string expensesFilename):EXPENSES_FILENAME(expensesFilename){};
 
+bool ExpensesFile::fileExists()
+{
+    ifstream ifile(EXPENSES_FILENAME.c_str());
+    return ifile.good();
+}
+
 void ExpensesFile::saveExpensesToFile(vector<Expense> expensesVector)
 {
     cout<<"saving expenses file"<<endl;

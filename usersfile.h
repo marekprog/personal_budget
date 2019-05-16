@@ -10,6 +10,7 @@ class UsersFile : public XmlFile
     const string USERS_FILENAME;
 public:
     UsersFile(string usersFilename);
+    bool fileExists();
     void saveUsersToFile(vector<User> usersVector);
     vector<User> readUsersFromFile();
 };

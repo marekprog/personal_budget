@@ -2,6 +2,12 @@
 
 UsersFile::UsersFile(string usersFile):USERS_FILENAME(usersFile){};
 
+bool UsersFile::fileExists()
+{
+    ifstream ifile(USERS_FILENAME.c_str());
+    return ifile.good();
+}
+
 void UsersFile::saveUsersToFile(vector<User> usersVector)
 {
     cout<<"saving file"<<endl;

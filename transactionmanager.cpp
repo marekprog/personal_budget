@@ -35,9 +35,9 @@ void TransactionManager::addIncome(int loggedUserId)
     cin>>selectCat;
     income.item=income.itemList[selectCat];
     cout<<"Enter amount: ";
-    double am;
+    string am;
     cin>>am;
-    income.amount=am;//TODO: add prompt here, fix conversion
+    income.amount=Utils::fixDouble(am);
     income.userId=loggedUserId;
     income.transactionId=incomes.size();
 
@@ -53,7 +53,7 @@ void TransactionManager::addExpense(int loggedUserId)
     cout<<"Select Option:"<<endl;
     cout<<"(1) Use todays date or (2) Type date:"<<endl;
     cin>>selectDate;
-    cout<<"YOU have selected: "<<selectDate<<endl;
+    cout<<"You have selected: "<<selectDate<<endl;
     if (selectDate==1){
         expense.date=dateHandler.getCurrentDate();
         expense.dayNr=dateHandler.getDays(dateHandler.getCurrentDate());
@@ -75,11 +75,11 @@ void TransactionManager::addExpense(int loggedUserId)
     cin>>selectCat;
     expense.item=expense.itemList[selectCat];
     cout<<"Enter amount: ";
-    double am;
+    string am;
     cin>>am;
-    expense.amount=am;//TODO: add prompt here, fix conversion
+    expense.amount=Utils::fixDouble(am);
     expense.userId=loggedUserId;
-    expense.transactionId=incomes.size();
+    expense.transactionId=expenses.size();
 
     expenses.push_back(expense);
     expensesFile.saveExpensesToFile(expenses);

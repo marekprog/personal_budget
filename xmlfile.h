@@ -2,6 +2,7 @@
 #define XMLFILE_H
 #include "Markup.h"
 #include <iostream>
+#include <fstream>
 
 using namespace std;
 
@@ -13,7 +14,7 @@ public:
     XmlFile();
     XmlFile(string fileName);
 protected:
-    bool fileExists();
+    virtual bool fileExists()=0;
     CMarkup xml;
 
 };
