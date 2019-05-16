@@ -6,6 +6,7 @@
 #include "expensesfile.h"
 #include "incomesfile.h"
 #include "datehandler.h"
+#include <algorithm>
 
 class TransactionManager
 {
@@ -16,16 +17,21 @@ class TransactionManager
     IncomesFile incomesFile;
     DateHandler dateHandler;
 
-    void readIncomesFromFile(int loggedUserId);
-    void readExpensesFromFile(int loggedUserId);
+
 
 public:
     TransactionManager(string fileWithExpenses,string fileWithIncomes);
-    void addIncome();
-    void addExpense();
-    void getBalanceCurrentMonth();
-    void getBalancePreviousMonth();
-    void getBalanceCustom(int startDate,int endDate);
+    void readIncomesFromFile();
+    void readExpensesFromFile();
+    void addIncome(int loggedUserId);
+    void addExpense(int loggedUserId);
+    void getBalance(int startDate,int endDate,int loggedUserId);
+    void getBalanceCurrentMonth(int loggedUserId);
+    void getBalanceLastMonth(int loggedUserId);
+    void getBalanceCustom(int loggedUserId);
+    void printExpenses(vector<Expense> expenses);
+    void printIncomes(vector<Income> expenses);
+
 };
 
 #endif // TRANSACTIONMANAGER_H

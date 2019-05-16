@@ -70,3 +70,22 @@ bool DateHandler::isLeap(int year){
     else
         return false;
 }
+
+bool DateHandler::checkDate(string date)
+{
+    if(date.length()!=10)
+        return false;
+    else {
+        string currentDate=getCurrentDate();
+        int year=stoi(date.substr(0,4));
+        int month=stoi(date.substr(5,6));
+        int day=stoi(date.substr(8,9));
+        if(date.length()!=10)
+            return false;
+        if(year>=2000 && year<=stoi(currentDate.substr(0,4)) && month>=1 && month<=12 && day>=1 && day<=getNumberOfdays(month,year))
+                return true;
+        else
+            return false;
+    }
+
+}

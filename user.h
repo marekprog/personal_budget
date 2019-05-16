@@ -19,6 +19,7 @@ public:
     void setSurname ();
     void setLogin ();
     void setPassword ();
+    void setPassword(string newPassword);
     int getId();
     string getName();
     string getSurname();

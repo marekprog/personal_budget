@@ -19,6 +19,8 @@ public:
     UserManager(string fileWithUsers);
     void userRegistration();
     void userLogin();
+    void userLogout();
+    void changePassword();
     vector<User> getUsers();
     int getUserLogin();
 };

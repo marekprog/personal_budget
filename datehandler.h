@@ -22,6 +22,7 @@ public:
     int getMonth(string date);
     int getDays(string date);
     bool isLeap(int year);
+    bool checkDate(string date);
 };
 
 #endif // DATEHANDLER_H

@@ -29,6 +29,11 @@ void User::setPassword ()
     cout<<"Type your password"<<endl;
     cin>>password;
 }
+void User::setPassword (string newPassword)
+{
+    password=newPassword;
+}
+
 int User::getId()
 {
     return id;

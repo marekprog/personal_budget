@@ -5,23 +5,107 @@
 #include <usermanager.h>
 #include "datehandler.h"
 #include "transactionmanager.h"
+#include "utils.h"
 using namespace std;
+
+char mainMenu();
+char userMenu();
 
 int main()
 {
-    UserManager userManager("filename.xml");
+    UserManager userManager("users.xml");
     DateHandler date;
     TransactionManager transaction("expenses.xml","incomes.xml");
-    //userManager.userRegistration();
-    //userManager.userLogin();
-    //UsersFile usersFile("filename.xml");
-    //usersFile.saveUsersToFile(userManager.getUsers());
-    //usersFile.readUsersFromFile();
-    //cout<<date.getDays("");
-    date.getCurrentDate();
-    cout<<date.getDays(date.getCurrentDate());
-    transaction.addIncome();
-
+    while(true){
+        char selection;
+        if (userManager.getUserLogin()==0){
+            selection = mainMenu();
+            switch (selection)
+            {
+            case '1':
+                userManager.userRegistration();
+                break;
+            case '2':
+                userManager.userLogin();
+                break;
+            case '9':
+                exit(0);
+            default:
+                cout << endl << "No such option." << endl << endl;
+                system("pause");
+                break;
+            }
+        }
+        else {
+            selection = userMenu();
+            switch (selection)
+            {
+            case '1':
+                transaction.addIncome(userManager.getUserLogin());
+                break;
+            case '2':
+                transaction.addExpense(userManager.getUserLogin());
+                break;
+            case '3':
+                transaction.getBalanceCurrentMonth(userManager.getUserLogin());
+                cin.get();
+                break;
+            case '4':
+                transaction.getBalanceLastMonth(userManager.getUserLogin());
+                cin.get();
+                break;
+            case '5':
+                transaction.getBalanceCustom(userManager.getUserLogin());
+                cin.get();
+                break;
+            case '6':
+                userManager.changePassword();
+                break;
+            case '7':
+                userManager.userLogout();
+                break;
+            }
+        }
+    }
     return 0;
+}
+
+char mainMenu()
+{
+    char selection;
+
+    system("clear");
+    cout << "    >>> PERSONAL BUDGET <<<" << endl;
+    cout << "---------------------------" << endl;
+    cout << "1. User Registration" << endl;
+    cout << "2. User Login" << endl;
+    cout << "9. End Program" << endl;
+    cout << "---------------------------" << endl;
+    cout << "Your selection: ";
+    selection = Utils::readChar();
+
+    return selection;
+}
+
+char userMenu()
+{
+    char selection;
+
+    system("clear");
+    cout << " >>> USER MENU <<<" << endl;
+    cout << "---------------------------" << endl;
+    cout << "1. Add income" << endl;
+    cout << "2. Add expense" << endl;
+    cout << "3. Current month balance" << endl;
+    cout << "4. Previous month balance " << endl;
+    cout << "5. Balance from selected period" << endl;
+    cout << "---------------------------" << endl;
+    cout << "6. Change password" << endl;
+    cout << "7. Log out" << endl;
+    cout << "---------------------------" << endl;
+    cout << "Your selection: ";
+    selection = Utils::readChar();
+
+    return selection;
 }
 

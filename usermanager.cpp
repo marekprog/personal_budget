@@ -13,7 +13,7 @@ void UserManager::userRegistration()
 {
     User user;
     cout<<"Rejestracja Uzytkownika, podaj dane:"<<endl;
-    int newId=users.size();
+    int newId=users.size()+1;
     user.setId(newId);
     user.setName();
     user.setSurname();
@@ -36,7 +36,7 @@ void UserManager::userLogin(){
         if (itr -> getLogin() == login)
         {
             for (int attempts = 3; attempts > 0; attempts--)
-            {
+         {
                 cout << "Enter password. : Attempts left" << attempts << ": ";
                 cin >> pass;
 
@@ -47,18 +47,45 @@ void UserManager::userLogin(){
                     break;
 
                 }
+             cout << "Wrong password entered 3 times." << endl;
             }
-            cout << "Wrong password entered 3 times." << endl;
+        break;
         }
         itr++;
+        //cout << "No such user exists." << endl << endl;
     }
-    cout << "No such user exists." << endl << endl;
-    system("pause");
+//cout << "No such user exists." << endl << endl;
 }
 int UserManager::getUserLogin()
 {
     return loggedUserId;
 }
 
+void UserManager::userLogout()
+{
+    cout<<"You are logged out"<<endl;
+    loggedUserId=0;
 
+}
+
+void UserManager::changePassword()
+{
+    if(loggedUserId==0){
+        cout<<"Please log in to change your password"<<endl;
+        userLogin();
+    }
+    string newPassword = "";
+    cout << "Type new password: ";
+    cin >> newPassword;
+
+    for (vector <User>::iterator itr = users.begin(); itr != users.end(); itr++)
+    {
+        if (itr->getId() == loggedUserId)
+        {
+            itr -> setPassword(newPassword);
+            cout << "Password successfully changed." << endl << endl;
+        }
+    }
+
+}
 

@@ -4,7 +4,7 @@
 
 class Expense : public Transaction
 {
-    map <int,string> itemlist =
+    map <int,string> itemList =
     {
         {1,"bills"},
         {2,"leisure"},
@@ -13,6 +13,7 @@ class Expense : public Transaction
     string item;
 public:
     Expense();
+    void printMap();
     friend class TransactionManager;
     friend class ExpensesFile;
 };
