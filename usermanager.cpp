@@ -55,7 +55,10 @@ void UserManager::userLogin(){
     cout << "No such user exists." << endl << endl;
     system("pause");
 }
-
+int UserManager::getUserLogin()
+{
+    return loggedUserId;
+}
 
 
 

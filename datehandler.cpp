@@ -10,20 +10,25 @@ string DateHandler::getCurrentDate()
     time_t timeNow;
     tm *datestr;
     time( & timeNow );
-    string date;
-    //timeNow=time(nullptr);
+    string date,yr,mn,d;
     datestr=localtime(&timeNow);
-    //date=ctime(&timeNow);
-    cout << datestr->tm_year+1900<<endl;
-    cout<<"string time"<<asctime(datestr);
+    yr=to_string(datestr->tm_year+1900);
+    if(datestr->tm_mon>8)
+        mn=to_string(datestr->tm_mon+1);
+    else
+        mn="0"+to_string(datestr->tm_mon+1);
+    if(datestr->tm_mday>8)
+        d=to_string(datestr->tm_mday);
+    else
+        d="0"+to_string(datestr->tm_mday);
+    date=yr+"-"+mn+"-"+d;
     return date;
-    //TODO rework this function because it is wrong
 }
 int DateHandler::getDays(string date){
     int year,month,day,days{0};
-    year=2000;
-    month=1;
-    day=1;
+    year=stoi(date.substr(0,4));
+    month=stoi(date.substr(5,6));
+    day=stoi(date.substr(8,9));
 
    for(int y=2000;y<year;y++){
        if(isLeap(y))

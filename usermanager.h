@@ -6,7 +6,7 @@
 
 class UserManager
 {
-    int loggedUserId;
+    int loggedUserId{NULL};
     vector<User> users;
     UsersFile usersFile;
 
@@ -20,6 +20,7 @@ public:
     void userRegistration();
     void userLogin();
     vector<User> getUsers();
+    int getUserLogin();
 };
 
 #endif // USERMANAGER_H
