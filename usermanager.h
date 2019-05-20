@@ -6,7 +6,7 @@
 
 class UserManager
 {
-    int loggedUserId{NULL};
+    int loggedUserId{0};
     vector<User> users;
     UsersFile usersFile;
 
@@ -23,6 +23,7 @@ public:
     void changePassword();
     vector<User> getUsers();
     int getUserLogin();
+    bool isLogged();
 };
 
 #endif // USERMANAGER_H

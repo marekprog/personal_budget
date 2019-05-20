@@ -4,8 +4,9 @@
 #include <usersfile.h>
 #include <usermanager.h>
 #include "datehandler.h"
-#include "transactionmanager.h"
+//#include "transactionmanager.h"
 #include "utils.h"
+#include "budgetmanager.h"
 using namespace std;
 
 char mainMenu();
@@ -13,21 +14,21 @@ char userMenu();
 
 int main()
 {
-    UserManager userManager("users.xml");
-    DateHandler date;
-    TransactionManager transaction("expenses.xml","incomes.xml");
+    //UserManager userManager("users.xml");
+    //DateHandler date;
+    BudgetManager budget("users.xml","expenses.xml","incomes.xml");
     while(true){
         char selection;
-        if (userManager.getUserLogin()==0){
+        if (!budget.isUserLogged()){
             selection = mainMenu();
             switch (selection)
             {
             case '1':
-                userManager.userRegistration();
+                budget.userRegistration();
                 cin.get();
                 break;
             case '2':
-                userManager.userLogin();
+                budget.userLogin();
                 break;
             case '9':
                 exit(0);
@@ -42,25 +43,25 @@ int main()
             switch (selection)
             {
             case '1':
-                transaction.addIncome(userManager.getUserLogin());
+                budget.addIncome();
                 break;
             case '2':
-                transaction.addExpense(userManager.getUserLogin());
+                budget.addExpense();
                 break;
             case '3':
-                transaction.getBalanceCurrentMonth(userManager.getUserLogin());
+                budget.getBalanceCurrentMonth();
                 break;
             case '4':
-                transaction.getBalanceLastMonth(userManager.getUserLogin());
+                budget.getBalanceLastMonth();
                 break;
             case '5':
-                transaction.getBalanceCustom(userManager.getUserLogin());
+                budget.getBalanceCustom();
                 break;
             case '6':
-                userManager.changePassword();
+                budget.changeUserPassword();
                 break;
             case '7':
-                userManager.userLogout();
+                budget.userLogout();
                 break;
             }
         }

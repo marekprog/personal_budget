@@ -88,4 +88,13 @@ void UserManager::changePassword()
     }
 
 }
+bool UserManager::isLogged()
+{
+    if(loggedUserId!=0){
+        return true;
+    }
+    else {
+        return false;
+    }
+}
 

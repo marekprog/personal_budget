@@ -1,12 +1,13 @@
 #include "transactionmanager.h"
 
-TransactionManager::TransactionManager(string fileWithExpenses,string fileWithIncomes):expensesFile(fileWithExpenses),incomesFile(fileWithIncomes)
+TransactionManager::TransactionManager(string fileWithExpenses,string fileWithIncomes,int loggedUserId):
+    expensesFile(fileWithExpenses),incomesFile(fileWithIncomes),LOGGED_USER_ID(loggedUserId)
 {
     incomes=incomesFile.readIncomesFromFile();
     expenses=expensesFile.readExpensesFromFile();
 }
 
-void TransactionManager::addIncome(int loggedUserId)
+void TransactionManager::addIncome()
 {
     Income income;
     int selectDate;
@@ -38,14 +39,14 @@ void TransactionManager::addIncome(int loggedUserId)
     string am;
     cin>>am;
     income.amount=Utils::fixDouble(am);
-    income.userId=loggedUserId;
+    income.userId=LOGGED_USER_ID;
     income.transactionId=incomes.size();
 
     incomes.push_back(income);
     incomesFile.saveIncomesToFile(incomes);
 }
 
-void TransactionManager::addExpense(int loggedUserId)
+void TransactionManager::addExpense()
 {
     Expense expense;
     int selectDate;
@@ -78,7 +79,7 @@ void TransactionManager::addExpense(int loggedUserId)
     string am;
     cin>>am;
     expense.amount=Utils::fixDouble(am);
-    expense.userId=loggedUserId;
+    expense.userId=LOGGED_USER_ID;
     expense.transactionId=expenses.size();
 
     expenses.push_back(expense);
@@ -167,7 +168,7 @@ void TransactionManager::printIncomes(vector<Income> transactions)
         cout<<"------------------------------"<<endl;
 }
 
-void TransactionManager::getBalance(int startDate, int endDate, int loggedUserId)
+void TransactionManager::getBalance(int startDate, int endDate)
 {
     //some local helping variables here
     vector<Expense> lExpenses;
@@ -175,7 +176,7 @@ void TransactionManager::getBalance(int startDate, int endDate, int loggedUserId
     double sumExp{0},sumInc{0};
     for (vector <Expense>::iterator itr = expenses.begin(); itr != expenses.end(); itr++)
     {
-        if (itr->dayNr >= startDate && itr->dayNr<=endDate &&itr->userId==loggedUserId)
+        if (itr->dayNr >= startDate && itr->dayNr<=endDate &&itr->userId==LOGGED_USER_ID)
         {
             lExpenses.push_back(*itr);
             sumExp+=itr->amount;
@@ -183,7 +184,7 @@ void TransactionManager::getBalance(int startDate, int endDate, int loggedUserId
     }
     for (vector <Income>::iterator itr = incomes.begin(); itr != incomes.end(); itr++)
     {
-        if (itr->dayNr >= startDate && itr->dayNr<=endDate &&itr->userId==loggedUserId)
+        if (itr->dayNr >= startDate && itr->dayNr<=endDate &&itr->userId==LOGGED_USER_ID)
         {
             lIncomes.push_back(*itr);
             sumInc+=itr->amount;
@@ -203,16 +204,16 @@ void TransactionManager::getBalance(int startDate, int endDate, int loggedUserId
     cout<<"Balance for the selected period: "<<sumInc-sumExp<<endl;
 }
 
-void TransactionManager::getBalanceCurrentMonth(int loggedUserId)
+void TransactionManager::getBalanceCurrentMonth()
 {
     string dateStart=dateHandler.getCurrentDate();
     string dateNow=dateStart;
     dateStart.replace(8,9,"01");
     cout<<"Balance for period: "<<dateStart<<" - "<<dateNow<<endl;
-    getBalance(dateHandler.getDays(dateStart),dateHandler.getDays(dateNow),loggedUserId);
+    getBalance(dateHandler.getDays(dateStart),dateHandler.getDays(dateNow));
 }
 
-void TransactionManager::getBalanceLastMonth(int loggedUserId)
+void TransactionManager::getBalanceLastMonth()
 {
     string dateNow=dateHandler.getCurrentDate();
     string dateBeginning,dateEnd;
@@ -237,9 +238,9 @@ void TransactionManager::getBalanceLastMonth(int loggedUserId)
         dateEnd=to_string(nYear)+"0"+to_string(nMonth)+"-"+to_string(dateHandler.getNumberOfdays(nMonth,nYear));
     }
     cout<<"Balance for period: "<<dateBeginning<<" - "<<dateEnd<<endl;
-    getBalance(dateHandler.getDays(dateBeginning),dateHandler.getDays(dateEnd),loggedUserId);
+    getBalance(dateHandler.getDays(dateBeginning),dateHandler.getDays(dateEnd));
 }
-void TransactionManager::getBalanceCustom(int loggedUserId)
+void TransactionManager::getBalanceCustom()
 {
     string dateStart,dateEnd;
     int daysBegin,daysEnd;
@@ -255,7 +256,7 @@ void TransactionManager::getBalanceCustom(int loggedUserId)
     daysEnd=dateHandler.getDays(dateEnd);
     }while(dateHandler.checkDate(dateEnd)!=1);
     cout<<"Balance for period: "<<dateStart<<" - "<<dateEnd<<endl;
-    getBalance(daysBegin,daysEnd,loggedUserId);
+    getBalance(daysBegin,daysEnd);
     cin.get();
 }
 

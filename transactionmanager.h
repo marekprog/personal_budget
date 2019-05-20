@@ -11,7 +11,7 @@
 
 class TransactionManager
 {
-    //const int LOGGED_USER_ID;
+    const int LOGGED_USER_ID;
     vector<Income> incomes;
     vector<Expense> expenses;
     ExpensesFile expensesFile;
@@ -21,15 +21,15 @@ class TransactionManager
 
 
 public:
-    TransactionManager(string fileWithExpenses,string fileWithIncomes);
+    TransactionManager(string fileWithExpenses,string fileWithIncomes,int loggedUserId);
     void readIncomesFromFile();
     void readExpensesFromFile();
-    void addIncome(int loggedUserId);
-    void addExpense(int loggedUserId);
-    void getBalance(int startDate,int endDate,int loggedUserId);
-    void getBalanceCurrentMonth(int loggedUserId);
-    void getBalanceLastMonth(int loggedUserId);
-    void getBalanceCustom(int loggedUserId);
+    void addIncome();
+    void addExpense();
+    void getBalance(int startDate,int endDate);
+    void getBalanceCurrentMonth();
+    void getBalanceLastMonth();
+    void getBalanceCustom();
     void printExpenses(vector<Expense> expenses);
     void printIncomes(vector<Income> expenses);
 
