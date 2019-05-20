@@ -1,6 +1,6 @@
 #include "incomesfile.h"
 
-IncomesFile::IncomesFile(string incomesFilename):INCOMES_FILENAME(incomesFilename){};
+IncomesFile::IncomesFile(string incomesFilename):INCOMES_FILENAME(incomesFilename){}
 
 bool IncomesFile::fileExists()
 {

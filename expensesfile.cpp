@@ -1,6 +1,6 @@
 #include "expensesfile.h"
 
-ExpensesFile::ExpensesFile(string expensesFilename):EXPENSES_FILENAME(expensesFilename){};
+ExpensesFile::ExpensesFile(string expensesFilename):EXPENSES_FILENAME(expensesFilename){}
 
 bool ExpensesFile::fileExists()
 {

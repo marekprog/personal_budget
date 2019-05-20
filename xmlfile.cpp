@@ -1,6 +1,6 @@
 #include "xmlfile.h"
 
-XmlFile::XmlFile(string fileName):FILE_NAME(fileName){};
+XmlFile::XmlFile(string fileName):FILE_NAME(fileName){}
 
 XmlFile::XmlFile():FILE_NAME("textxml.xml"){};
 

@@ -1,6 +1,6 @@
 #include "usersfile.h"
 
-UsersFile::UsersFile(string usersFile):USERS_FILENAME(usersFile){};
+UsersFile::UsersFile(string usersFile):USERS_FILENAME(usersFile){}
 
 bool UsersFile::fileExists()
 {
