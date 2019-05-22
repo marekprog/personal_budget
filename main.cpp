@@ -1,8 +1,8 @@
 #include <iostream>
 #include "Markup.h"
 #include <time.h>
-#include <usersfile.h>
-#include <usermanager.h>
+#include "usersfile.h"
+#include "usermanager.h"
 #include "datehandler.h"
 //#include "transactionmanager.h"
 #include "utils.h"
@@ -72,7 +72,7 @@ int main()
 char mainMenu()
 {
     char selection;
-    system("clear");
+    Utils::clearScreen();
     cout << "    >>> PERSONAL BUDGET <<<" << endl;
     cout << "---------------------------" << endl;
     cout << "1. User Registration" << endl;
@@ -89,7 +89,7 @@ char userMenu()
 {
     char selection;
     cin.get();
-    system("clear");
+    Utils::clearScreen();
     cout << " >>> USER MENU <<<" << endl;
     cout << "---------------------------" << endl;
     cout << "1. Add income" << endl;

@@ -5,6 +5,13 @@
 #include <fstream>
 #include <algorithm>
 #include <string>
+#ifdef _WIN32
+#define CLEAR "cls"
+#else //In any other OS
+#define CLEAR "clear"
+#endif
+
+
 
 using namespace std;
 
@@ -14,6 +21,11 @@ public:
     Utils();
     static char readChar();
     static double fixDouble(string number);
+    inline static void clearScreen(){system(CLEAR);}
+#if defined(_WIN32) || defined (_WIN64)
+#include <conio.h>
+
+#endif
 
 };
 
