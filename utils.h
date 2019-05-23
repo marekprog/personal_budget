@@ -21,12 +21,7 @@ public:
     Utils();
     static char readChar();
     static double fixDouble(string number);
-    inline static void clearScreen(){system(CLEAR);}
-#if defined(_WIN32) || defined (_WIN64)
-#include <conio.h>
-
-#endif
-
+    inline static void clearScreen(){system(CLEAR);
 };
 
 #endif // UTILS_H
